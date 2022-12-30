@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przelicznik walut</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/form.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <script defer src="js/script.js"></script>
+</head>
+
+<body>
+    <form class="js-form form">
+        <fieldset class="form__fieldset">
+            <legend class="form__legend">Przelicznik walut</legend>
+            <p>
+                <label class="form__label">
+                    <span class="form__labelText">
+                        Podaj kwotę :
+                    </span>
+                    <input class="form__field js-amount" min="0" name="amount" placeholder="Wpisz kwotę" autofocus
+                        type="number" required step="0.01">
+                </label>
+            </p>
+            <p>
+                <label class="form__label">
+                    <span class="form__labelText">
+                        Wymieniasz :
+                    </span>
+                    <select class="form__field js-firstCurrency">
+                        <option value="EUR"> Euro </option>
+                        <option value="USD"> Dolar </option>
+                        <option value="PLN"> Złoty </option>
+                        <option value="RUB"> Rubel rosyjski </option>
+                    </select>
+                </label>
+            </p>
+            <p>
+                <label class="form__label">
+                    <span class="form__labelText">
+                        Wymieniasz na :
+                    </span>
+                    <select class="form__field js-secondCurrency">
+                        <option value="EUR"> Euro </option>
+                        <option value="USD"> Dolar </option>
+                        <option value="PLN"> Złoty </option>
+                        <option value="RUB"> Rubel rosyjski</option>
+                    </select>
+                </label>
+            <p>
+                <button class="form__button">Przelicz</button>
+            </p>
+        </fieldset>
+        <p class="form__resultText">
+            <strong class="js-index"></strong>
+            <strong class="js-result form__resultText"></strong>
+        </p>
+
+    </form>
+    <footer class="footer">
+        <p> #Dane kursu walut pochodzą ze strony www.monito.com/najkorzystniejsze-kursy-wymiany/rub/usd, dnia
+            27.12.2022r</p>
+    </footer>
+</body>
+
+</html>
