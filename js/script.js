@@ -1,66 +1,67 @@
-let resultElement = document.querySelector(".js-result");
-let indexElement = document.querySelector(".js-index");
-let formElement = document.querySelector(".js-form");
-let firstCurrency = document.querySelector(".js-firstCurrency");
-let secondCurrency = document.querySelector(".js-secondCurrency");
-let amountElement = document.querySelector(".js-amount");
+{
+    const calculateRate = (currencyChange) => {
+        const plnToEur = 0.2153;
+        const plnToUsd = 0.2294;
+        const plnToRub = 15.7275;
+        const usdToEur = 0.9383;
+        const eurToRub = 68.6558;
+        const usdToRub = 73.0653;
 
-const plnToEur = 0.2153;
-const plnToUsd = 0.2294;
-const plnToRub = 15.7275;
-const usdToEur = 0.9383;
-const eurToRub = 68.6558;
-const usdToRub = 73.0653;
-
-formElement.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    indexElement.innerText = parseFloat(amountElement.value) + " " + firstCurrency.value + " = ";
-
-    let currencyChange = `${firstCurrency.value}/${secondCurrency.value}`;
-    switch (currencyChange) {
-        case "PLN/EUR":
-            exchangeRate = plnToEur;
-            break;
-        case "PLN/USD":
-            exchangeRate = plnToUsd;
-            break;
-        case "PLN/RUB":
-            exchangeRate = plnToRub;
-            break;
-        case "EUR/PLN":
-            exchangeRate = 1 / plnToEur;
-            break;
-        case "EUR/USD":
-            exchangeRate = 1 / usdToEur;
-            break;
-        case "EUR/RUB":
-            exchangeRate = eurToRub;
-            break;
-        case "USD/EUR":
-            exchangeRate = usdToEur;
-            break;
-        case "USD/PLN":
-            exchangeRate = 1 / plnToUsd;
-            break;
-        case "USD/RUB":
-            exchangeRate = eurToRub;
-            break;
-        case "RUB/EUR":
-            exchangeRate = 1 / eurToRub;
-            break;
-        case "RUB/PLN":
-            exchangeRate = 1 / plnToRub;
-            break;
-        case "RUB/USD":
-            exchangeRate = 1 / eurToRub;
-            break;
-        default:
-            exchangeRate = 1;
+        switch (currencyChange) {
+            case "PLN/EUR":
+                return plnToEur;
+            case "PLN/USD":
+                return plnToUsd;
+            case "PLN/RUB":
+                return plnToRub;
+            case "EUR/PLN":
+                return 1 / plnToEur;
+            case "EUR/USD":
+                return 1 / usdToEur;
+            case "EUR/RUB":
+                return eurToRub;
+            case "USD/EUR":
+                return usdToEur;
+            case "USD/PLN":
+                return 1 / plnToUsd;
+            case "USD/RUB":
+                return usdToRub;
+            case "RUB/EUR":
+                return 1 / eurToRub;
+            case "RUB/PLN":
+                return 1 / plnToRub;
+            case "RUB/USD":
+                return 1 / eurToRub;
+            default:
+                return 1;
+        }
     }
-    let exchange = parseFloat(exchangeRate);
-    let amount = parseFloat(amountElement.value);
-    let result = amount * exchange;
 
-    resultElement.innerText = result.toFixed(2) + " " + secondCurrency.value;
-});
+    const upDateResultText = (result, secondCurrency, amountElement, firstCurrency) => {
+        const resultElement = document.querySelector(".js-result");
+        const indexElement = document.querySelector(".js-index");
+
+        indexElement.innerText = parseFloat(amountElement.value) + " " + firstCurrency.value + " = ";
+        resultElement.innerText = result.toFixed(2) + " " + secondCurrency.value;
+    }
+
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+        const firstCurrency = document.querySelector(".js-firstCurrency");
+        const secondCurrency = document.querySelector(".js-secondCurrency");
+        const amountElement = document.querySelector(".js-amount");
+
+        const currencyChange = `${firstCurrency.value}/${secondCurrency.value}`;
+        const result = parseFloat(amountElement.value) * parseFloat(calculateRate(currencyChange));
+
+        upDateResultText(result, secondCurrency, amountElement, firstCurrency)
+    }
+
+
+    const init = () => {
+        const formElement = document.querySelector(".js-form");
+
+        formElement.addEventListener("submit", onFormSubmit);
+    }
+    init()
+}
