@@ -41,8 +41,8 @@
         const resultElement = document.querySelector(".js-result");
         const indexElement = document.querySelector(".js-index");
 
-        indexElement.innerText = parseFloat(amountElement.value) + " " + firstCurrency.value + " = ";
-        resultElement.innerText = result.toFixed(2) + " " + secondCurrency.value;
+        indexElement.innerText = `${parseFloat(amountElement.value)} ${firstCurrency.value} = `;
+        resultElement.innerText = `${result.toFixed(2)} ${secondCurrency.value}`;
     }
 
     const onFormSubmit = (event) => {
@@ -63,5 +63,5 @@
 
         formElement.addEventListener("submit", onFormSubmit);
     }
-    init()
+    init();
 }
