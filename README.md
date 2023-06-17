@@ -8,3 +8,13 @@ https://sajrim.github.io/Currency-conventer-/
 
 ![allaws to choose final currency](images/conventer2.png)
 
+## Technology used in the project:
+- HTML
+- CSS
+- Markdown
+- JavaScript
+- ES6+ Feature
+- BEM convention
+- Normalize CSS
+- GIT
+
